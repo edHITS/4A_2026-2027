@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista elementów</title>
+    <style>
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        .brak-dostepnosci { background-color: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <h1>Lista produktów ({{ produkty|length }})</h1>
+    <table>
+        <tr>
+            <th>#</th>
+            <th>Nazwa</th>
+            <th>Kategoria</th>
+            <th>Cena</th>
+            <th>Dostępność</th>
+        </tr>
+        {% for p in produkty %}
+        <tr class="{% if not p.dostepny %}brak-dostepnosci{% endif %}">
+            <td>{{ loop.index }}</td>
+            <td>
+                <a href="{{ url_for('element', id=p.id) }}">{{ p.nazwa }}</a>
+            </td>
+            <td>{{ p.kategoria }}</td>
+            <td>{{ p.cena }} zł</td>
+            <td>{% if p.dostepny %}Dostępny{% else %}Niedostępny{% endif %}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
