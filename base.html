@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>{% block tytul %}Sklep 4TP{% endblock %}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css')
+}}">
+</head>
+<body>
+<nav>
+<a href="{{ url_for('index') }}">Start</a> |
+<a href="{{ url_for('produkty') }}">Produkty</a>
+</nav>
+<main>
+{% block tresc %}{% endblock %}
+</main>
+<footer>4TP 2026</footer>
+</body>
+</html>
