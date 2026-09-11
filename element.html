@@ -1,19 +1,35 @@
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <title>Szczegóły: {{ produkt.nazwa }}</title>
-</head>
-<body>
-    <h1>Szczegóły elementu: {{ produkt.nazwa }}</h1>
-    <ul>
-        <li><strong>ID:</strong> {{ produkt.id }}</li>
-        <li><strong>Nazwa:</strong> {{ produkt.nazwa }}</li>
-        <li><strong>Kategoria:</strong> {{ produkt.kategoria }}</li>
-        <li><strong>Cena:</strong> {{ produkt.cena }} zł</li>
-        <li><strong>Status:</strong> {% if produkt.dostepny %}Dostępny{% else %}Brak{% endif %}</li>
-    </ul>
-
-    <p><a href="{{ url_for('lista') }}">← Powrót do listy</a></p>
-</body>
-</html>
+{% extends "base.html" %}
+{% block card %}
+<h1>About product {{ product.login }}</h1>
+<table>
+  <tr>
+    <th>ID</th>
+    <td>{{ product.id }}</td>
+  </tr>
+  <tr>
+    <th>LOGIN</th>
+    <td>{{ product.login }}</td>
+  </tr>
+  <tr>
+    <th>PASSWORD</th>
+    <td>{{ product.password }}</td>
+  </tr>
+  <tr>
+    <th>AGE</th>
+    <td>{% if product.age %}{{ product.age }} lat{% else %}No data available{% endif %}</td>
+  </tr>
+  <tr>
+    <th>AVAILABLE</th>
+    <td>
+      {% if product.available %}
+        AVAILABLE
+      {% else %}
+        <b>NOT AVAILABLE</b>
+      {% endif %}
+    </td>
+  </tr>
+</table>
+<p style="margin-top: 15px;">
+  <a href="{{ url_for('index') }}">Back to list</a>
+</p>
+{% endblock %}
