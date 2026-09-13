@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block card %}
+<h1>Edytuj produkt: {{ p.login }}</h1>
+
+<form method="POST">
+  <div>
+    <label for="login">Login / Nazwa:</label><br>
+    <input type="text" id="login" name="login" value="{{ p.login }}" required>
+  </div>
+  
+  <br>
+
+  <div>
+    <label for="password">Password:</label><br>
+    <input type="text" id="password" name="password" value="{{ p.password }}" required>
+  </div>
+
+  <br>
+
+  <div>
+    <label for="age">Age:</label><br>
+    <input type="number" id="age" name="age" value="{{ p.age if p.age is not none else '' }}">
+  </div>
+
+  <br>
+
+  <div>
+    <label for="available">
+      <input type="checkbox" id="available" name="available" {% if p.available %}checked{% endif %}>
+      Available
+    </label>
+  </div>
+
+  <br>
+
+  <button type="submit">Save changes</button>
+  <a href="{{ url_for('element', id=p.id) }}">Cancel</a>
+</form>
+{% endblock %}

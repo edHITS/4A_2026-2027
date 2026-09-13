@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block card %}
+<h1>{{ p.login }}</h1>
+<p>Age: {{ p.age }}</p>
+<p>Available: {{ "YES" if p.dostepny else "NO" }}</p>
+<a href="{{ url_for('list') }}">Back</a>
+{% endblock %}

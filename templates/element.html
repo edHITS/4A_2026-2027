@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block card %}
+<h1>About product {{ product.login }}</h1>
+<table>
+  <tr>
+    <th>ID</th>
+    <td>{{ product.id }}</td>
+  </tr>
+  <tr>
+    <th>LOGIN</th>
+    <td>{{ product.login }}</td>
+  </tr>
+  <tr>
+    <th>PASSWORD</th>
+    <td>{{ product.password }}</td>
+  </tr>
+  <tr>
+    <th>AGE</th>
+    <td>{% if product.age %}{{ product.age }} lat{% else %}No data available{% endif %}</td>
+  </tr>
+  <tr>
+    <th>AVAILABLE</th>
+    <td>
+      {% if product.available %}
+        AVAILABLE
+      {% else %}
+        <b>NOT AVAILABLE</b>
+      {% endif %}
+    </td>
+  </tr>
+</table>
+<p style="margin-top: 15px;">
+  <a href="{{ url_for('index') }}">Back to list</a>
+</p>
+{% endblock %}

@@ -1,0 +1,6 @@
+# created by virtualenv automatically
+
+*.db
+instance
+.venv
+.idea

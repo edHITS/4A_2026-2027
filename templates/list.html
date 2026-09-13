@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block card %}
+<h1>Products ({{ products|length }})</h1>
+{% if products %}
+<table>
+<tr><th>ID</th><th>LOGIN</th><th>PASSWORD</th><th>AGE</th><th>AVAILABLE</th><th>DELETE</th><th>EDIT</th></tr>
+{% for p in products %}
+<tr>
+<td>{{ loop.index }}</td>
+<td>
+<a href="{{ url_for('element', id=p.id) }}">{{ p.login }}</a>
+</td>
+<td>
+{{ p.password }}
+</td>
+<td>{{ p.age }}</td>
+<td>{% if not p.available %}<b>not av</b>{% endif %}</td>
+<td><a href="{{ url_for('delete', id=p.id) }}">❌</a></td>
+<td><a href="{{ url_for('edit', id=p.id) }}">🛠</a></td>
+</tr>
+{% endfor %}
+</table>
+{% else %}
+<p>No products found. <a href="{{ url_for('add') }}">Add first</a>.</p>
+{% endif %}
+{% endblock %}
